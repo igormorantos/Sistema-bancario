@@ -16,9 +16,9 @@
 
 
 <h2>Rotas da API</h2>
-<h3>GET /contas: Lista de todas as contas registradas.</h3>
-<h3>GET /contas/saldo: Retorna saldo de uma conta específica.</h3>
-<h3>GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h3>
+*<h3>GET /contas: Lista de todas as contas registradas.</h3>
+*<h3>GET /contas/saldo: Retorna saldo de uma conta específica.</h3>
+*<h3>GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h3>
 <h3>POST /contas: Cria uma conta.</h3>
 <h3>POST /transacoes/depositar: Realiza um deposito em uma conta especificada.</h3>
 <h3>POST /transacoes/sacar: Realiza um saque em uma conta especificada.</h3>
