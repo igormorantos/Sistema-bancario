@@ -32,12 +32,12 @@
 
 <h3>Contribuições são bem-vindas! Se você gostaria de contribuir para este projeto, siga estas etapas:
 
-Crie um fork deste repositório.
+ - Crie um fork deste repositório.
 
-Crie uma nova branch para suas alterações</h3>
+ - Crie uma nova branch para suas alterações</h3>
 
-Contato
+<h2>Contato</h2>
 
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue neste repositório ou entre em contato através do email igormsantos1@icloud.com
+<h4>Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue neste repositório ou entre em contato através do email igormsantos1@icloud.com
 
-Divirta-se explorando a API bancária!
+Divirta-se explorando a API bancária!</h4>
