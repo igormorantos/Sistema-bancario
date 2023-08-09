@@ -16,12 +16,16 @@
 
 
 <h2>Rotas da API</h2>
-<h3>POST /api/contas: Cria uma nova conta bancária.</h3>
-<h3>GET /api/contas/:id: Retorna informações sobre uma conta específica.</h3>
-<h3>POST /api/contas/:id/deposito: Realiza um depósito na conta especificada.</h3>
-<h3>POST /api/contas/:id/saque: Realiza um saque na conta especificada.</h3>
-<h3>POST /api/contas/transferencia: Realiza uma transferência entre contas.</h3>
-<h3>GET /api/contas/:id/saldo: Retorna o saldo disponível em uma conta.</h3>
+<h3>GET /contas: Lista de todas as contas registradas.</h3>
+<h3>GET /contas/saldo: Retorna saldo de uma conta específica.</h3>
+<h3>GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h3>
+<h3>POST /contas: Cria uma conta.</h3>
+<h3>POST /transacoes/depositar: Realiza um deposito em uma conta especificada.</h3>
+<h3>POST /transacoes/sacar: Realiza um saque em uma conta especificada.</h3>
+<h3>POST /transacoes/transferir: Realiza uma transferencia entre contas.</h3>
+<h3>PUT /contas/:numeroConta/usuario: Edição de dados em conta existente.</h3> 
+<h3>DELETE /contas/:numeroConta: Deletar conta.</h3>
+
 <h3>A API estará acessível em: http://localhost:3000</h3>
 
 Contribuindo
