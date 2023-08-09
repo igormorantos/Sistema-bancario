@@ -16,27 +16,28 @@
 
 
 <h2>Rotas da API</h2>
-<h3>*GET /contas: Lista de todas as contas registradas.</h3>
-<h3>*GET /contas/saldo: Retorna saldo de uma conta específica.</h3>
-<h3>*GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h3>
-<h3>*POST /contas: Cria uma conta.</h3>
-<h3>*POST /transacoes/depositar: Realiza um deposito em uma conta especificada.</h3>
-<h3>*POST /transacoes/sacar: Realiza um saque em uma conta especificada.</h3>
-<h3>*POST /transacoes/transferir: Realiza uma transferencia entre contas.</h3>
-<h3>*PUT /contas/:numeroConta/usuario: Edição de dados em conta existente.</h3> 
-<h3>*DELETE /contas/:numeroConta: Deletar conta.</h3>
+<h3>GET /contas: Lista de todas as contas registradas.</h3>
+<h3>GET /contas/saldo: Retorna saldo de uma conta específica.</h3>
+<h3>GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h3>
+<h3>POST /contas: Cria uma conta.</h3>
+<h3>POST /transacoes/depositar: Realiza um deposito em uma conta especificada.</h3>
+<h3>POST /transacoes/sacar: Realiza um saque em uma conta especificada.</h3>
+<h3>POST /transacoes/transferir: Realiza uma transferencia entre contas.</h3>
+<h3>PUT /contas/:numeroConta/usuario: Edição de dados em conta existente.</h3> 
+<h3>DELETE /contas/:numeroConta: Deletar conta.</h3>
 
 <h3>A API estará acessível em: http://localhost:3000</h3>
 
-Contribuindo
+<h2>Contribuindo</h2>
 
-Contribuições são bem-vindas! Se você gostaria de contribuir para este projeto, siga estas etapas:
+<h3>Contribuições são bem-vindas! Se você gostaria de contribuir para este projeto, siga estas etapas:
 
 Crie um fork deste repositório.
 
-Crie uma nova branch para suas alterações
+Crie uma nova branch para suas alterações</h3>
 
 Contato
-Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue neste repositório ou entre em contato através do email contato@exemplo.com.
+
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue neste repositório ou entre em contato através do email igormsantos1@icloud.com
 
 Divirta-se explorando a API bancária!
