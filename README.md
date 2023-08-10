@@ -10,9 +10,29 @@
 <h4>- Consulta de Saldo: Os titulares de contas podem verificar o saldo disponível em suas contas a qualquer momento.</h4>
 
 <h2>📡Tecnologias Utilizadas</h2>
- </h4>- Linguagem: Node.js</h4>
- </h4>- Banco de Dados:PostgreSQL(pode ser facilmente substituído por outros bancos de dados).</h4>
- </h4>- Dependências: Veja o arquivo requirements.txt para a lista completa de dependências.</h4>
+ <h4>- Linguagem: Node.js</h4>
+ <h4>- Banco de Dados:PostgreSQL(pode ser facilmente substituído por outros bancos de dados).</h4>
+ <h4>- Dependências: Veja o arquivo requirements.txt para a lista completa de dependências.</h4>
+
+<h2>⏳Inicialização</h2>
+ </h4>Antes de começar, certifique-se de que você tenha o Node.js instalado em sua máquina. Você pode baixá-lo e instalá-lo a partir do site oficial:https://nodejs.org/en 
+    
+- Abra um terminal (ou linha de comando) no seu computador.
+
+- Navegue para o diretório do projeto que você clonou. Você pode usar o comando cd para entrar na pasta do projeto. Por exemplo:
+  - cd caminho/para/o/diretorio/do/projeto
+
+- Certifique-se de que o arquivo package.json está presente no diretório do projeto. Este arquivo contém informações sobre as dependências do projeto.
+
+- Execute o seguinte comando para instalar as dependências listadas no package.json:
+  - npm install
+
+- Isso iniciará o processo de instalação de todas as dependências do projeto a partir do registro do npm. O npm lerá o arquivo package.json e instalará todas as dependências listadas no campo dependencies.
+
+- Depois que o comando for executado, todas as dependências do projeto serão baixadas e instaladas na pasta node_modules no diretório do projeto.
+
+- Se o projeto tiver um arquivo package-lock.json, o npm também garantirá que as versões exatas das dependências sejam instaladas, o que ajuda a manter a consistência entre ambientes de desenvolvimento.
+</4>
 
 
 <h2>🌐Rotas da API</h2>
