@@ -36,7 +36,7 @@
 
 
 <h2>🌐Rotas da API</h2>
-<h4>- GET /contas: Lista de todas as contas registradas.</h4>
+<h4> - GET /contas: Lista de todas as contas registradas.</h4>
 <h4> - GET /contas/saldo: Retorna saldo de uma conta específica.</h4>
 <h4> - GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h4>
 <h4> - POST /contas: Cria uma conta.</h4>
@@ -48,6 +48,10 @@
 
 <h4>A API estará acessível em: http://localhost:3000</h4>
 
+<h2>💎Implementações Futuras</h2>
+- Autenticação e Segurança: Autenticação de dois fatores e a Autorização baseada em tokens, como OAuth 2.0, além de certificados de segurança para comunicação segura (HTTPS, TLS).
+- Inserção de banco de dados: O banco de dados mocado sera substituido por um banco de dados relacional(Postgresql)
+
 <h2>🤝Contribuindo</h2>
 
 <h4>Contribuições são bem-vindas! Se você gostaria de contribuir para este projeto, siga estas etapas:
@@ -55,6 +59,8 @@
  - Crie um fork deste repositório.
 
  - Crie uma nova branch para suas alterações</h4>
+
+ <h2>🔎Status do Projetos</h2>
 
 <h2>✉️Contato</h2>
 
