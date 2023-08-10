@@ -49,7 +49,9 @@
 <h4>A API estará acessível em: http://localhost:3000</h4>
 
 <h2>💎Implementações Futuras</h2>
-- Autenticação e Segurança: Autenticação de dois fatores e a Autorização baseada em tokens, como OAuth 2.0, além de certificados de segurança para comunicação segura (HTTPS, TLS).
+
+- Autenticação e Segurança: Autenticação de dois fatores e a Autorização baseada em tokens, como OAuth 2.0, além de certificados  de segurança para comunicação segura (HTTPS, TLS).
+
 - Inserção de banco de dados: O banco de dados mocado sera substituido por um banco de dados relacional(Postgresql)
 
 <h2>🤝Contribuindo</h2>
@@ -61,7 +63,8 @@
  - Crie uma nova branch para suas alterações</h4>
 
  <h2>🔎Status do Projetos</h2>
-
+ <img  alt="igor-Js" src="https://camo.githubusercontent.com/699a3b795a510e84dfbf4e752a6ad2025d1e17c4bd46c2e0ddc53bb006c4bf4a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374617475732d456d253230446573656e766f6c76696d656e746f2d677265656e">
+ 
 <h2>✉️Contato</h2>
 
 <h5>Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue neste repositório ou entre em contato através do email igormsantos1@icloud.com
