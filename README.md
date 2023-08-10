@@ -15,7 +15,7 @@
  </h4>- Dependências: Veja o arquivo requirements.txt para a lista completa de dependências.</h4>
 
 
-<h2>Rotas da API</h2>
+<h2>🌐Rotas da API</h2>
 <h4>- GET /contas: Lista de todas as contas registradas.</h4>
 <h4> - GET /contas/saldo: Retorna saldo de uma conta específica.</h4>
 <h4> - GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h4>
@@ -28,7 +28,7 @@
 
 <h4>A API estará acessível em: http://localhost:3000</h4>
 
-<h2>Contribuindo</h2>
+<h2>🤝Contribuindo</h2>
 
 <h4>Contribuições são bem-vindas! Se você gostaria de contribuir para este projeto, siga estas etapas:
 
@@ -36,7 +36,7 @@
 
  - Crie uma nova branch para suas alterações</h4>
 
-<h2>Contato</h2>
+<h2>✉️Contato</h2>
 
 <h5>Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para abrir uma issue neste repositório ou entre em contato através do email igormsantos1@icloud.com
 
