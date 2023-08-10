@@ -1,15 +1,15 @@
-<h1> API REST de Sistema Bancário em Node.js </h1>
+<h1> API Sistema Bancário </h1>
 
-<h3>Bem-vindo ao repositório da API REST de Sistema Bancário em Node.js! Este projeto é uma implementação de uma API que simula funcionalidades básicas de um sistema bancário, permitindo aos usuários realizar operações como criação de contas, depósitos, saques, transferências e verificação de extrato!</h3>
+<h2>📖Descrição</h2>
+<h3>Este projeto é uma implementação de uma API que simula funcionalidades básicas de um sistema bancário, permitindo aos usuários realizar operações como criação de contas, depósitos, saques, transferências e verificação de extrato!</h3>
 
-<h2>Funcionalidades Principais</h2>
-
-<h3>- Criação de Contas: Os usuários podem criar novas contas bancárias, fornecendo informações como nome, CPF, e saldo inicial.</h2>
+<h2>🔧Funcionalidades</h2>
+<h3>- Criação de Contas: Os usuários podem criar novas contas bancárias, fornecendo informações como nome, CPF, e saldo inicial.</h3>
 <h3>- Depósitos e Saques: Os titulares das contas podem realizar depósitos e saques nas suas contas, mantendo seus saldos atualizados.</h2>
 <h3>- Transferências: Os usuários podem transferir fundos entre diferentes contas cadastradas no sistema.</h3>
 <h3>- Consulta de Saldo: Os titulares de contas podem verificar o saldo disponível em suas contas a qualquer momento.</h3>
 
-<h2>Tecnologias Utilizadas</h2>
+<h2>📡Tecnologias Utilizadas</h2>
  <h3>- Linguagem: Node.js</h3>
  <h3>- Banco de Dados:PostgreSQL(pode ser facilmente substituído por outros bancos de dados).</h3>
  <h3>- Dependências: Veja o arquivo requirements.txt para a lista completa de dependências.</h3>
