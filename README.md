@@ -62,7 +62,7 @@
 
  - Crie uma nova branch para suas alterações</h4>
 
- <h2>🔎Status do Projetos</h2>
+ <h2>🔎Status do Projeto</h2>
  <img  alt="igor-Js" src="https://camo.githubusercontent.com/699a3b795a510e84dfbf4e752a6ad2025d1e17c4bd46c2e0ddc53bb006c4bf4a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5374617475732d456d253230446573656e766f6c76696d656e746f2d677265656e">
  
 <h2>✉️Contato</h2>
