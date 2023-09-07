@@ -61,35 +61,56 @@ const login = async (req, res) => {
     }
 }//2
 
-const atualizarDadosDaConta = (req, res) => {
-    const { numeroConta } = req.params
-    const { nome, cpf, data_nascimento, telefone, email, senha } = req.body
-
-
-    const conta = bancoDeDados.contas.find((conta) => {
-        return conta.numero === Number(numeroConta)
-    })
-
-
-    conta.usuario.nome = nome ?? conta.nome;
-    conta.usuario.cpf = cpf ?? conta.cpf;
-    conta.usuario.data_nascimento = data_nascimento ?? conta.data_nascimento;
-    conta.usuario.telefone = telefone ?? conta.telefone;
-    conta.usuario.email = email ?? conta.email;
-    conta.usuario.senha = senha ?? conta.senha;
-
-
-    res.status(200).json({ mensagem: 'Conta atualizada com sucesso' });
+const detalharUsuario = async (req, res) => {
+    return res.json(req.usuario);
 }
 
+const atualizarDadosDaConta = async (req, res) => {
+    const usuario = req.usuario
+    const { nome, email, senha } = req.body
+
+    try {
+        if (!nome || !email || !senha) {
+            res.status(401).json({ mensagem: "todos os requisitos precisam ser preenchido (nome, email, senha)" })
+        }
+
+        const emailExiste = await pool.query('select * from usuarios where email= $1', [email]);
+
+        if (emailExiste.rowCount >= 1) {
+            res.status(401).json({ mensagem: "O e-mail informado já está sendo utilizado por outro usuário." })
+        }
+
+        const senhaCript = await bcrypt.hash(senha, 10)
+
+        const usuarioBancoDados = await pool.query('select * from usuarios where id= $1', [usuario.id]);
+
+        const updateUsuarioNome = await pool.query(`update usuarios SET nome = $1 WHERE id = $2`,
+            [nome, usuario.id])
+
+        const updateUsuarioEmail = await pool.query(`update usuarios SET email = $1 WHERE id = $2`,
+            [email, usuario.id])
+
+        const updateUsuarioSenha = await pool.query(`update usuarios SET senha = $1 WHERE id = $2`,
+            [senhaCript, usuario.id])
+
+        const UsuarioAtualizado = {
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email
+        }
+
+        res.status(201).json(UsuarioAtualizado);
+    }
+    catch (e) {
+        res.status(401).json(e.mensagem)
+    }
+}
+
+
 const deletarConta = (req, res) => {
-    const { numeroConta } = req.params
+    const usuario = req.usuario
 
-    bancoDeDados.contas = bancoDeDados.contas.filter((conta) => {
-        return conta.numero !== Number(numeroConta);
-    })
-
-    res.status(200).json({ "mensagem": "Conta excluída com sucesso" });
+    return res.json(usuario.id);
 }
 
 
@@ -98,5 +119,6 @@ module.exports = {
     criarConta,
     atualizarDadosDaConta,
     deletarConta,
-    login
+    login,
+    detalharUsuario
 }
