@@ -1,3 +1,4 @@
+const pool = require('../conexao')
 const bancoDeDados = require('../bancodedados');
 const { utcToZonedTime, format } = require('date-fns-tz');
 

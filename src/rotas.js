@@ -5,6 +5,7 @@ const controladorTransacoes = require('./contoladores/transacoes')
 const intermediariosValidacoes = require('./Intermediarios/validacoes')
 
 rotas.get('/contas', intermediariosValidacoes.ValidacaoSenhaBanco, controladorContas.listaDeContas)
+rotas.post('/', controladorContas.criarConta)
 rotas.get('/contas/saldo', intermediariosValidacoes.ValidacaoConsultaSaldo, controladorTransacoes.consultarSaldo)
 rotas.get('/contas/extrato', intermediariosValidacoes.ValidacaoExtrato, controladorTransacoes.extrato)
 rotas.post('/contas', intermediariosValidacoes.ValidacaoCriarConta, controladorContas.criarConta)

@@ -1,29 +1,45 @@
+const pool = require('../conexao')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const senhaJwt = require('../autenciacoes/senhaJwt')
+
 const bancoDeDados = require('../bancodedados');
 const contador = { identificarConta: 1 }
 
-const listaDeContas = (req, res) => {
-    return res.status(200).json(bancoDeDados.contas);
+const listaDeContas = async (req, res) => {
+    try {
+        const contas = await pool.query('select * from contas');
+
+        res.json(contas.rows);
+    }
+    catch (error) {
+        res.status(404).json(error.mensagem);
+    }
 }
 
-const criarConta = (req, res) => {
+const criarConta = async (req, res) => {
     const { nome, cpf, data_nascimento, telefone, email, senha } = req.body
 
-    const conta = {
-        numero: contador.identificarConta++,
-        saldo: 0,
-        usuario: {
-            nome,
-            cpf,
-            data_nascimento,
-            telefone,
-            email,
-            senha
+    try {
+        const senhaCriptografada = await bcrypt.hash(senha, 10);
+        //const novoUsurario = await pool.query('insert into usuarios (nome, cpf, data_nascimento, email, senha) values ($1, $2, $3, $4, $5) returning *', [nome, cpf, data_nascimento, email, senhaCriptografada])
+        //const novaConta = await pool.query('insert into contas (saldo, usuario_id) values ($1, $2) returning *', [0, usuario.rows[0].id])
+        const usuario = await pool.query('select * from usuarios where cpf = $1', [cpf])
+        const conta = await pool.query('select * from contas where usuario_id = $1', [usuario.rows[0].id])
+
+        const usuarioConta = {
+            Nome: usuario.rows[0].nome,
+            Cpf: usuario.rows[0].cpf,
+            Data_Nascimento: usuario.rows[0].data_nascimento,
+            Email: usuario.rows[0].email,
+            Saldo: conta.rows[0].saldo
         }
+
+        res.status(403).json(usuarioConta);
     }
-
-    bancoDeDados.contas.push(conta)
-
-    res.status(201).json(conta);
+    catch (e) {
+        res.json
+    }
 }
 
 const atualizarDadosDaConta = (req, res) => {
