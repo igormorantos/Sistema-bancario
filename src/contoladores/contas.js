@@ -18,28 +18,24 @@ const listaDeContas = async (req, res) => {
 }
 
 const criarConta = async (req, res) => {
-    const { nome, cpf, data_nascimento, telefone, email, senha } = req.body
+    const { nome, cpf, data_nascimento, email, senha } = req.body
 
-    try {
-        const senhaCriptografada = await bcrypt.hash(senha, 10);
-        //const novoUsurario = await pool.query('insert into usuarios (nome, cpf, data_nascimento, email, senha) values ($1, $2, $3, $4, $5) returning *', [nome, cpf, data_nascimento, email, senhaCriptografada])
-        //const novaConta = await pool.query('insert into contas (saldo, usuario_id) values ($1, $2) returning *', [0, usuario.rows[0].id])
-        const usuario = await pool.query('select * from usuarios where cpf = $1', [cpf])
-        const conta = await pool.query('select * from contas where usuario_id = $1', [usuario.rows[0].id])
+    const senhaCriptografada = await bcrypt.hash(senha, 10);
+    const novoUsuario = await pool.query('insert into usuarios (nome, cpf, data_nascimento, email, senha) values ($1, $2, $3, $4, $5) returning *', [nome, cpf, data_nascimento, email, senhaCriptografada])
+    const usuario = await pool.query('select * from usuarios where cpf = $1', [cpf])
+    const novaConta = await pool.query('insert into contas (saldo, usuario_id) values ($1, $2) returning *', [0, usuario.rows[0].id])
+    const conta = await pool.query('select * from contas where usuario_id = $1', [usuario.rows[0].id])
 
-        const usuarioConta = {
-            Nome: usuario.rows[0].nome,
-            Cpf: usuario.rows[0].cpf,
-            Data_Nascimento: usuario.rows[0].data_nascimento,
-            Email: usuario.rows[0].email,
-            Saldo: conta.rows[0].saldo
-        }
-
-        res.status(403).json(usuarioConta);
+    const usuarioConta = {
+        Nome: usuario.rows[0].nome,
+        Cpf: usuario.rows[0].cpf,
+        Data_Nascimento: usuario.rows[0].data_nascimento,
+        Email: usuario.rows[0].email,
+        Saldo: conta.rows[0].saldo
     }
-    catch (e) {
-        res.json
-    }
+
+    res.status(201).json(usuarioConta);
+
 }
 
 const atualizarDadosDaConta = (req, res) => {
