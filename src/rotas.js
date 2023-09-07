@@ -8,7 +8,7 @@ rotas.post('/contas', controladorContas.criarConta)
 rotas.post('/login', controladorContas.login)
 
 rotas.get('/contas/detalhar', verificarUsuarioLogado, controladorContas.detalharUsuario)
-rotas.put('/contas/atualizar', verificarUsuarioLogado, controladorContas.atualizarDadosDaConta)
+rotas.put('/contas/atualizar', verificarUsuarioLogado, controladorContas.atualizarDados)
 rotas.delete('/contas/deletar', verificarUsuarioLogado, controladorContas.deletarConta)
 
 rotas.get('/contas/saldo', controladorTransacoes.consultarSaldo)

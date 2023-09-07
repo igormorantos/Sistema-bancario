@@ -22,7 +22,10 @@ const verificarUsuarioLogado = async (req, res, next) => {
         req.usuario = {
             id: usuario.rows[0].id,
             nome: usuario.rows[0].nome,
-            email: usuario.rows[0].email
+            email: usuario.rows[0].email,
+            cpf: usuario.rows[0].cpf,
+            data_nascimento: usuario.rows[0].data_nascimento,
+            saldo: usuario.rows[0].saldo
         }
 
         next();

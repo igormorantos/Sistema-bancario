@@ -1,4 +1,3 @@
-CREATE DATABASE BancoDeDados;
 CREATE TABLE usuarios (
   id serial PRIMARY KEY,
   nome VARCHAR(100),
@@ -6,22 +5,16 @@ CREATE TABLE usuarios (
   data_nascimento DATE,
   telefone VARCHAR(15),
   email VARCHAR(255) UNIQUE,
-  senha VARCHAR(255)
+  senha VARCHAR(255),
+  saldo NUMERIC(10,2)
 );
-CREATE TABLE contas (
+
+CREATE TABLE transacoes (
   id serial PRIMARY KEY,
-  saldo NUMERIC(10,2),
+  data DATE,
+  tipo VARCHAR(10),
+  valor NUMERIC(10,2),
   usuario_id SERIAL REFERENCES usuarios (id)
 );
-CREATE TABLE saques (
-  id serial PRIMARY KEY,
-  data DATE,
-  valor NUMERIC(10,2),
-  conta_id SERIAL REFERENCES contas (id)
-);
-CREATE TABLE deposito (
-  id serial PRIMARY KEY,
-  data DATE,
-  valor NUMERIC(10,2),
-  conta_id SERIAL REFERENCES contas (id)
-);
+
+ALTER TABLE transacoes ADD CONSTRAINT tipo_check CHECK (tipo IN ('entrada', 'saida'));
