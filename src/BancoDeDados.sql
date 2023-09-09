@@ -12,9 +12,10 @@ CREATE TABLE usuarios (
 CREATE TABLE transacoes (
   id serial PRIMARY KEY,
   data DATE,
-  tipo VARCHAR(10),
+  tipo VARCHAR(15),
   valor NUMERIC(10,2),
   usuario_id SERIAL REFERENCES usuarios (id)
+  contaDestino_id NUMERIC(1000)
 );
 
-ALTER TABLE transacoes ADD CONSTRAINT tipo_check CHECK (tipo IN ('entrada', 'saida'));
+ALTER TABLE transacoes ADD CONSTRAINT tipo_check CHECK (tipo IN ('entrada', 'saida', 'transferencia'));

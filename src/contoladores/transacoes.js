@@ -31,7 +31,7 @@ const deposito = async (req, res) => {
 
     return res.status(201).json(contaAtualizada);
 
-} //pronto
+}
 
 const saque = async (req, res) => {
     const { valor } = req.body;
@@ -63,12 +63,12 @@ const saque = async (req, res) => {
 
     return res.status(201).json(contaAtualizada);
 
-}//pronto
+}
 
 const transferencia = async (req, res) => {
     const { numero_conta_destino, valor } = req.body;
     const usuario = req.usuario;
-    const tipo = 'Transferencia';
+    const tipo = 'transferencia';
 
     const saldoDestino = await pool.query('SELECT saldo FROM usuarios WHERE id = $1', [numero_conta_destino]);
 
@@ -77,16 +77,17 @@ const transferencia = async (req, res) => {
         return res.status(401).json({ mensagem: "a conta não existe, digite uma conta valida" });
     }
 
-    const novoSaldo = parseFloat(valor);
+    const novoSaldo = Number(valor);
     const saldoOrigem = await pool.query('SELECT saldo FROM usuarios WHERE id = $1', [usuario.id]);
     const saldoOrigemAtulizado = parseFloat(saldoOrigem.rows[0].saldo) - novoSaldo;
-    const saldoDestinoAtulizado = parseFloat(saldoDestino.rows.saldo) + novoSaldo;
 
     if (parseFloat(saldoOrigem.rows[0].saldo) < novoSaldo) {
         return res.status(401).json({ mensagem: "o valor de transferencia precisa ser menor ou igual o valor do saldo!" });
     }
 
     const enviandoBancoOrigem = await pool.query('UPDATE usuarios SET saldo = $1 WHERE id = $2', [saldoOrigemAtulizado, usuario.id]);
+
+    const saldoDestinoAtulizado = parseFloat(saldoDestino.rows[0].saldo) + novoSaldo;
     const enviandoBancoDestino = await pool.query('UPDATE usuarios SET saldo = $1 WHERE id = $2', [saldoDestinoAtulizado, numero_conta_destino]);
 
     const dataSaque = new Date();
@@ -95,63 +96,40 @@ const transferencia = async (req, res) => {
     const zonedDate = utcToZonedTime(dataSaque, TimeZone)
     const output = format(zonedDate, pattern, { timeZone: 'America/Sao_Paulo' })
 
-    const novaTransaco = await pool.query('insert into transacoes (data, tipo, valor, usuario_id) values ($1, $2, $3, $4) returning *', [output, tipo, novoSaldo, usuario.id]);
+    const novaTransaco = await pool.query('insert into transacoes (data, tipo, valor, usuario_id, contadestino_id) values ($1, $2, $3, $4, $5) returning *', [output, tipo, novoSaldo, usuario.id, numero_conta_destino]);
     const contaDestino = await pool.query('SELECT * FROM usuarios WHERE id = $1', [numero_conta_destino]);
 
     const contaAtualizada = {
+        idOrigem: usuario.id,
         Nome: usuario.nome,
+        idDestino: contaDestino.rows[0].id,
         Destino: contaDestino.rows[0].nome,
-        Saldo: usuario.saldo,
-        Transferencia: valor
+        Transferencia: valor,
+        Saldo: usuario.saldo
     }
 
 
-    return res.status(201).json(saldoDestino);
-    //verificar o erro
+    return res.status(201).json(contaAtualizada);
 }
 
 const consultarSaldo = (req, res) => {
-    const { numero_conta } = req.query
+    const usuario = req.usuario
 
-    const conta = bancoDeDados.contas.find((conta) => {
-        return conta.numero === Number(numero_conta)
-    })
+    const user = {
+        Nome: usuario.nome,
+        Saldo: usuario.saldo
+    }
 
-    res.status(200).json({ saldo: conta.saldo })
+    res.status(200).json(user)
 
 }
 
-const extrato = (req, res) => {
-    const { numero_conta } = req.query
+const extrato = async (req, res) => {
+    const usuario = req.usuario
 
-    const depositos = bancoDeDados.depositos.find((deposito) => {
-        return deposito.numero_conta == numero_conta
-    })
+    const transacoes = await pool.query('SELECT * FROM transacoes WHERE usuario_id = $1', [usuario.id]);
 
-    const saques = bancoDeDados.saques.find((saque) => {
-        return saque.numero_conta == numero_conta
-    })
-
-    const transferenciasEnviadas = bancoDeDados.transferencias.find((transferencia) => {
-        return transferencia.numero_conta_origem == numero_conta
-    })
-
-
-
-    const transferenciasRecebidas = bancoDeDados.transferencias.filter((transferencia) => {
-        return transferencia.numero_conta_destino == numero_conta
-
-    })
-
-
-    const extrato = {
-        depositos,
-        saques,
-        transferenciasEnviadas,
-        transferenciasRecebidas
-    }
-
-    res.status(200).json(extrato)
+    res.status(200).json(transacoes.rows)
 }
 
 module.exports = {

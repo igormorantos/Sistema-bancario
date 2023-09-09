@@ -27,7 +27,7 @@ const criarConta = async (req, res) => {
     }
 
 
-} //pronto
+}
 
 const login = async (req, res) => {
     const { email, senha } = req.body
@@ -56,13 +56,13 @@ const login = async (req, res) => {
         console.log(error);
         return res.status(500).json({ mensagem: 'Erro interno do servidor' })
     }
-}//pronto
+}
 
 const detalharUsuario = async (req, res) => {
     const usuario = req.usuario
 
     return res.json(usuario);
-} //pronto
+}
 
 const atualizarDados = async (req, res) => {
     const usuario = req.usuario
@@ -92,13 +92,13 @@ const atualizarDados = async (req, res) => {
 
     res.status(201).json(usuarioBancoDadosAtualizado.rows[0]);
 
-}//pronto
+}
 
 const deletarConta = async (req, res) => {
     const usuario = req.usuario
     const deletarUsuario = await pool.query('DELETE FROM usuarios WHERE id = $1', [usuario.id]);
     return res.json(deletarUsuario.rows[0] + " usuario deletado!");
-}//pronto
+}
 
 
 

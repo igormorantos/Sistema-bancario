@@ -13,9 +13,8 @@ rotas.delete('/contas/deletar', verificarUsuarioLogado, controladorContas.deleta
 rotas.post('/transacoes/depositar', verificarUsuarioLogado, controladorTransacoes.deposito)
 rotas.post('/transacoes/sacar', verificarUsuarioLogado, controladorTransacoes.saque)
 rotas.post('/transacoes/transferir', verificarUsuarioLogado, controladorTransacoes.transferencia)
+rotas.get('/contas/saldo', verificarUsuarioLogado, controladorTransacoes.consultarSaldo)
+rotas.get('/contas/extrato', verificarUsuarioLogado, controladorTransacoes.extrato)
 
-rotas.get('/contas/saldo', controladorTransacoes.consultarSaldo)
-rotas.get('/contas/extrato', controladorTransacoes.extrato)
-rotas.post('/transacoes/sacar', controladorTransacoes.saque)
 
 module.exports = rotas
