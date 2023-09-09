@@ -8,6 +8,7 @@
 <h4>- Depósitos e Saques: Os titulares das contas podem realizar depósitos e saques nas suas contas, mantendo seus saldos atualizados.</h4>
 <h4>- Transferências: Os usuários podem transferir fundos entre diferentes contas cadastradas no sistema.</h4>
 <h4>- Consulta de Saldo: Os titulares de contas podem verificar o saldo disponível em suas contas a qualquer momento.</h4>
+<h4>- Consulta de Extrato: Os titulares de contas podem verificar os registros de deposisto e saques por dia.</h4>
 
 <h2>📡Tecnologias Utilizadas</h2>
  <h4>- Linguagem: Node.js</h4>
@@ -25,21 +26,22 @@
 - Certifique-se de que o arquivo package.json está presente no diretório do projeto. Este arquivo contém informações sobre as dependências do projeto.
 
 - Execute o seguinte comando para instalar as dependências listadas no package.json:
-  - npm install
 
-- Isso iniciará o processo de instalação de todas as dependências do projeto a partir do registro do npm. O npm lerá o arquivo package.json e instalará todas as dependências listadas no campo dependencies.
+ - npm install
 
-- Depois que o comando for executado, todas as dependências do projeto serão baixadas e instaladas na pasta node_modules no diretório do projeto.
+ - Isso iniciará o processo de instalação de todas as dependências do projeto a partir do registro do npm. O npm lerá o arquivo package.json e instalará todas as dependências listadas no campo dependencies.
 
-- Se o projeto tiver um arquivo package-lock.json, o npm também garantirá que as versões exatas das dependências sejam instaladas, o que ajuda a manter a consistência entre ambientes de desenvolvimento.
+ - Depois que o comando for executado, todas as dependências do projeto serão baixadas e instaladas na pasta node_modules no diretório do projeto.
+
+ - Se o projeto tiver um arquivo package-lock.json, o npm também garantirá que as versões exatas das dependências sejam instaladas, o que ajuda a manter a consistência entre ambientes de desenvolvimento.
 </4>
 
 
 <h2>🌐Rotas da API</h2>
-<h4> - GET /contas: Lista de todas as contas registradas.</h4>
+<h4> - POST /contas: Cria uma conta.</h4>
+<h4> - POST /login: Login na conta do usuario com email e senha cadastrados.</h4>
 <h4> - GET /contas/saldo: Retorna saldo de uma conta específica.</h4>
 <h4> - GET /contas/extrato: Retorna todas as transações de uma conta especifica.</h4>
-<h4> - POST /contas: Cria uma conta.</h4>
 <h4> - POST /transacoes/depositar: Realiza um deposito em uma conta especificada.</h4>
 <h4> - POST /transacoes/sacar: Realiza um saque em uma conta especificada.</h4>
 <h4> - POST /transacoes/transferir: Realiza uma transferencia entre contas.</h4>
@@ -50,9 +52,11 @@
 
 <h2>💎Implementações Futuras</h2>
 
-- Autenticação e Segurança: Autenticação de dois fatores e a Autorização baseada em tokens, como OAuth 2.0, além de certificados  de segurança para comunicação segura (HTTPS, TLS).
+- Autenticação e Segurança: Autenticação de dois fatores, como OAuth 2.0, além de certificados  de segurança para comunicação segura (HTTPS, TLS).
 
-- Inserção de banco de dados: O banco de dados mocado sera substituido por um banco de dados relacional(Postgresql)
+- realizar a validação do cpf antes de ser informada para o banco de dados atraves da API - CPF.CNPJ
+
+- Criar a interface grafica para consumir API
 
 <h2>🤝Contribuindo</h2>
 
