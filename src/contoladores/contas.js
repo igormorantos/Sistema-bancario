@@ -3,9 +3,6 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const senhaJwt = require('../autenciacoes/senhaJwt')
 
-const bancoDeDados = require('../bancodedados');
-const contador = { identificarConta: 1 }
-
 
 const criarConta = async (req, res) => {
     const { nome, cpf, data_nascimento, email, senha } = req.body
