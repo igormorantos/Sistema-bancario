@@ -1,9 +1,6 @@
 const pool = require('../conexao')
-const bancoDeDados = require('../bancodedados');
 const { utcToZonedTime, format } = require('date-fns-tz');
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const senhaJwt = require('../autenciacoes/senhaJwt')
+
 
 
 const deposito = async (req, res) => {
