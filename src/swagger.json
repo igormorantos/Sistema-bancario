@@ -1,0 +1,54 @@
+{
+    "openapi":"3.0.0",
+    "info": {
+        "title": "API de Sistema Bancario",
+        "description": "Este projeto é uma implementação de uma API que simula funcionalidades básicas de um sistema bancário, permitindo aos usuários realizar operações como criação de contas, depósitos, saques, transferências e verificação de extrato!",
+        "contact": {
+            "email":"igormsantos1@icloud.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths":{
+        "/contas":{
+            "post":{
+                "sumary": "Cadastro de Conta",
+                "description": "Essa Rota sera responsavel por cadastrar uma nova conta",
+                "tags":["Contas"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#components/schema/Conta"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+        "schemas":{
+            "Conta":{
+                "type": "object",
+                "properties":{
+                    "nome": {
+                        "type":"string"
+                    },
+                    "cpf":{
+                         "type":"string"
+                    },
+                    "data_nascimento":{
+                        "type":"string"
+                    },
+                    "email":{
+                        "type":"string"
+                    },
+                    "senha":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+
+}
