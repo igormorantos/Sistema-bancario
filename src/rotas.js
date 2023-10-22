@@ -16,5 +16,4 @@ rotas.post('/transacoes/transferir', verificarUsuarioLogado, controladorTransaco
 rotas.get('/contas/saldo', verificarUsuarioLogado, controladorTransacoes.consultarSaldo)
 rotas.get('/contas/extrato', verificarUsuarioLogado, controladorTransacoes.extrato)
 
-
 module.exports = rotas
