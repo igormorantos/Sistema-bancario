@@ -9,19 +9,123 @@
         "version": "1.0.0"
     },
     "paths":{
+        "/login":{
+            "post":{
+                "sumary": "Login na Conta",
+                "description": "Essa Rota sera responsavel por logar na conta",
+                "tags":["Contas"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#components/schemas/Login"
+                            },
+                            "examples": {
+                                "Login":{
+                                    "value": {
+                                        "email": "caiozin@seuprovedor.com",
+                                        "senha": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "400":{
+                        "description": "Account Already Exist"
+                    },
+                    "201":{
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "$ref": "#components/schemas/Login"
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        
+        },
         "/contas":{
             "post":{
-                "sumary": "Cadastro de Conta",
+                "sumary": "Cadastro de Contas",
                 "description": "Essa Rota sera responsavel por cadastrar uma nova conta",
                 "tags":["Contas"],
                 "requestBody":{
                     "content":{
                         "application/json":{
                             "schema":{
-                                "$ref":"#components/schema/Conta"
+                                "$ref":"#components/schemas/Login"
+                            },
+                            "examples": {
+                                "Conta":{
+                                    "value": {
+                                        "name": "caio",
+                                        "cpf": "92837829176",
+                                        "data_nascimento": "24/10/2022",
+                                        "email": "caiozin@seuprovedor.com",
+                                        "senha": "123456"
+                                    }
+                                }
                             }
                         }
                     }
+                },
+                "responses": {
+                    "401":{
+                        "description": "Unauthorized"
+                    },
+                    "400":{
+                        "description": "Account Already Exist"
+                    },
+                    "201":{
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "$ref": "#components/schemas/Conta"
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        },
+        "/contas/detalhar":{
+            "get":{
+                "description": "Essa Rotas Mostra as informações pessoais da conta logada",
+                "sumary": "Essa Rota sera responsavel por cadastrar uma nova conta",
+                "tags":["Contas"],
+                "security": [{"bearerAuth": []}],
+                "parameters":[{
+                    "name":"name",
+                    "in":"query",
+                    "description":"nome do produto para busca",
+                    "required" : true
+                }],
+                "responses": {
+                    "201":{
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "$ref": "#components/schemas/Conta"
+                                }
+                            }
+                        }
+                    }
+                    
                 }
             }
         }
@@ -47,6 +151,24 @@
                         "type":"string"
                     }
                 }
+            },
+            "Login":{
+                "type": "object",
+                "properties":{
+                    "email":{
+                        "type":"string"
+                    },
+                    "senha":{
+                        "type":"string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type":"http",
+                "scheme":"bearer",
+                "bearerFormat":"JWT"
             }
         }
     }

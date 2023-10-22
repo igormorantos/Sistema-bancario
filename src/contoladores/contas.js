@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken')
 const senhaJwt = require('../autenciacoes/senhaJwt')
 
 
-const criarConta = async (req, res) => {
-    const { nome, cpf, data_nascimento, email, senha } = req.body
+const criarConta = async (request, res) => {
+    const { nome, cpf, data_nascimento, email, senha } = request.body
 
     try {
         const senhaCriptografada = await bcrypt.hash(senha, 10);
